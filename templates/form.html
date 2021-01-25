@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Add Details</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="p-3 bg-dark text-white">
+		<div class="text-center">
+			<h2>Enter Details</h2>
+		</div>
+	</div>
+	<div class="container mt-5">
+		<form action="/submit" method="POST" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="stname">Student Name :</label>
+				<input name="stname" type="text" class="form-control" id="stname" placeholder="Enter Name" required>
+			</div>
+			<!-- <div class="form-group">
+				<label for="image">Upload Image</label>
+				<input type="file" name="image" id="image" accept="image">
+			</div> -->
+			<div class="form-group">
+				<label for="grdname">Gurdian Name :</label>
+				<input name="grdname" type="text" class="form-control" id="grdname" placeholder="Enter Name" required>
+			</div>
+			<div class="form-group">
+				<label for="schlname">School :</label>
+				<input name="schlname" type="text" class="form-control" id="schlname" placeholder="School Name" required>
+			</div>
+			<div class="row">
+				<div class=" form-group col-md-6">
+					<label for="cls">Class :</label>
+					<select name="cls" class="form-control" id="cls" required>
+						<option selected disabled value="">--choose--</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="doj">Date Of Join :</label>
+					<input name="doj" type="date" class="form-control" id="doj" required>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="stno">Phone Number (Student) :</label>
+					<input name="stno" type="tel" class="form-control" id="stno" placeholder="Enter 10 digit number" pattern="[0-9]{10}" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="grdno">Phone Number (Gurdian) :</label>
+					<input name="grdno" type="tel" class="form-control" id="grdno" placeholder="Enter 10 digit number" pattern="[0-9]{10}" required>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="whtsap">Whtasapp Number(Student) :</label>
+					<input name="whtsap" type="tel" class="form-control" id="whtsap" placeholder="Enter 10 digit number" pattern="[0-9]{10}">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="mail">Email id :</label>
+					<input name="email" type="email" class="form-control" id="email" placeholder="Email">
+				</div>
+			</div>
+			<div class="text-center">
+				<button type="submit" class="btn btn-success">Add Student</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

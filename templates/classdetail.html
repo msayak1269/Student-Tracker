@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Class {{classId }} Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        .css-serial {
+            counter-reset: serial-number;
+        }
+
+        .css-serial td:first-child:before {
+            counter-increment: serial-number;
+            content: counter(serial-number);
+        }
+
+        p {
+            margin: 0;
+        }
+        td,th{
+            text-align: center;
+            padding: 0;
+        }
+        button{
+            margin: 3px;
+        }
+        .nav a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-dark text-white">
+        <a class="navbar-brand text-white" href="/Home">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon text-white">
+            <i class="material-icons">menu</i>
+          </span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/account">Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/logout">Sign Out</a>  
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div class="p-3 bg-dark text-white m-2">
+        <div class="text-center">
+            <h2>Student List</h2>
+            <h5>(Class {{ classId }})</h5>
+        </div>
+    </div>
+    <div class="container mt-1">
+        <table class="table table-dark table-hover css-serial">
+            <thead>
+                <tr>
+                    <th>Serial No</th>
+                    <th>Student</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            {% for student in studentList %}
+            <tr>
+                <td></td>
+                <td>
+                    <a href="/view/class/{{ classId }}/student/{{ student['id'] }}" class="text-white"><p>{{ student["stname"] }}</p></a>
+                    <p><small>{{ student["schlname"] }}</small></p>
+                </td>
+
+                <td>
+                    <a target="_self" href="tel:{{ student['stno'] }}">
+                        <button class="btn btn-outline-warning btn-sm">Call</button>
+                    </a>
+
+                
+                    <a href="/fee/{{ student['id'] }}">
+                        <button class="btn btn-outline-warning btn-sm">Status</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script src="/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Home</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="manifest" href="/manifest.json">
+	<style>
+		h1 {
+			text-align: center;
+		}
+
+		.c1, .container-sm {
+			text-align: center;
+			-moz-border-radius: 30px;
+            -webkit-border-radius: 30px;
+            border-radius: 30px;
+		}
+
+		.c1 p {
+			font-size: 25px;
+		}
+
+		.c2 {
+			display: flex;
+			align-items: center;
+		}
+	</style>
+</head>
+
+<body>
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+		<div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+			<strong>{{message}}</strong>
+		  </div>
+		  <!-- <script>
+			M.toast({ html: "{{message}}", classes: "rounded" });
+		  </script> -->
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+	<!-- <div class="container text-right mt-2">
+		<a href="/logout">
+			<button class="btn btn-danger">Logout</button>
+		</a>
+	</div> -->
+	<div class="c1">
+		<div class="container-sm p-4 my-5 bg-dark text-white">
+			<h1>Student Tracker</h1>
+			<p>Teacher Name </p>
+			<p>{{user["name"]}}</p>
+			<p>Subject : {{ user["subject"] }}</p>
+			<!-- <p>No Of Students : {{ count }}</p> -->
+		</div>
+	</div>
+	<div class="container">
+		<div class="text-center">
+			<a href="/add" class="btn btn-info btn-lg m-3" role="button">Add Student</a>
+			<a href="/view" class="btn btn-info btn-lg" role="button">View Records</a>
+		</div>
+	</div>
+	<div class="container text-center mt-3">
+		<a href="/logout">
+			<button class="btn btn-danger">Logout</button>
+		</a>
+	</div>
+	<script src="/app.js"></script>
+</body>
+
+</html>

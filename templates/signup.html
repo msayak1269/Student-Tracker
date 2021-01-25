@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="/pwa_logo/logo48.png" type="image/png" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+		<div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+			<strong>{{message}}</strong>
+		  </div>
+		  <!-- <script>
+			M.toast({ html: "{{message}}", classes: "rounded" });
+		  </script> -->
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+    <div class="container">
+        <div class="row justify-content-center align-self-center mt-3">
+            <div class="card">
+                <div class="card-header">Sign Up</div>
+                <div class="card-body">
+                    <form action="/SigningUp" method="POST">
+                        <div class="form-group">
+                            <label for="name">Enter Name</label>
+                            <input name="name" id="name" class="form-control" type="text" placeholder="Enter Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input name="email" id="email" type="email" class="form-control" placeholder="Enter Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input name="subject" id="subject" type="text" class="form-control" placeholder="Enter Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pin1">Set PIN</label>
+                            <input name="pin1" id="pin1" type="password" class="form-control" placeholder="4 digit PIN" pattern="[0-9]{4}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pin2">Confirm PIN</label>
+                            <input name="pin2" id="pin2" type="password" class="form-control" placeholder=" Confirm 4 digit PIN"  required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/app.js"></script>
+</body>
+</html>

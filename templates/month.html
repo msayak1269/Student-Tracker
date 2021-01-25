@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Month</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        p {
+            font-weight: bolder;
+            font-size: 30px;
+        }
+
+        .card {
+            width: fit-content;
+            height: fit-content;
+            margin: 1vh;
+        }
+
+        .col-3,
+        .col-sm-2 {
+            justify-content: center;
+            align-self: center;
+            /* display: flex; */
+        }
+
+        button {
+            margin-top: 1vh;
+            margin-bottom: 1vh;
+            margin-left: 0;
+            margin-right: 0;
+            background-color: red;
+            color: honeydew;
+            border: none;
+        }
+
+        .btn-sm:hover {
+            /* background-color: red; */
+            border: none;
+        }
+
+        .btn-sm:active {
+            /* background-color: red; */
+            border: none;
+            transform: translateY(4px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <p>Student Joining Date : {{ student["doj"] }}</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row text-center mx-auto">
+                        {% for i in range(studentFee|length) %}
+                        {% if studentFee[i]==0 %}
+                        <div class="col-3 col-sm-2">
+                            <button type="button" class="btn-sm btn-warning" id="{{ i }}" onclick="knowID(this.id)">{{ month[i] }}</button>
+                        </div>
+                        {% else %}
+                        <div class="col-3 col-sm-2">
+                            <button type="button" class="btn-sm btn-info" id="{{ i }}" onclick="showDone()">{{ month[i] }}</button>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        const showDone = () => {
+            alert("Already Paid!");
+        }
+
+        var today = new Date();
+        var day = today.getDate();
+        var month = today.getMonth();
+        var year = today.getFullYear();
+        var date = day + "-" + month + "-" + year;
+        console.log(date);
+        var PIN = "{{ user['pin'] }}"
+
+        function knowID(clicked) {
+            var id = clicked;
+            //console.log(id);
+            
+            knowColor(id);
+            
+        }
+        function knowColor(id) {
+            var ele = document.getElementById(id);
+            // var color = window.getComputedStyle(ele, null).getPropertyValue("background-color");
+            //console.log(color);
+            changeColor(id);
+        }
+
+        function changeColor(id) {
+            if (true) {
+                var pin = prompt("Enter Your PIN ");
+                if (pin == PIN) {
+                    var a = confirm("Are You Sure?");
+                    if (a == true) {
+                        $.ajax({
+                            url: `/fee/{{student['id']}}/${id}/update`,
+                            method: "POST",
+                            success: () => {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+                else {
+                    alert("Invalid PIN");
+                }
+            }
+            else {
+                alert("Already Green");
+            }
+        }
+
+    </script>
+    <script src="/app.js"></script>
+</body>
+
+</html>
