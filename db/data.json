@@ -1,0 +1,56 @@
+[
+  {
+    "id": "b48f1ac7-885b-4187-9f06-ce330161b3ec",
+    "stname": "abcd",
+    "image": "male.jpg",
+    "grdname": "xyz",
+    "schlname": "gcect",
+    "cls": "12",
+    "doj": "2021-01-27",
+    "stno": "8617602064",
+    "grdno": "",
+    "whtsap": "",
+    "email": "",
+    "fee": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "f53df762-91c7-41e4-b4f0-a628b9be43b8",
+    "stname": "stuv",
+    "image": "male.jpg",
+    "grdname": "wxyz",
+    "schlname": "dpbm",
+    "cls": "10",
+    "doj": "2021-01-26",
+    "stno": "1234",
+    "grdno": "1234567890",
+    "whtsap": "",
+    "email": "",
+    "fee": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+]
